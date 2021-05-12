@@ -1,5 +1,5 @@
-//import java.util.ArrayList;
-//import java.util.Random;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
@@ -136,16 +136,45 @@ public class Main {
 
  */
         //C5
+        /*
         Student objStu = new Student();
+        //Student objStu1 = new Student();
         new Thread(()->{
             objStu.printPoint();
         }).start();
         new Thread(()->{
             objStu.printPoint();
         }).start();
+
+         */
         //t1 và t2 tác động vào obj
         //t1 và t2 chạy song song
         //t1 in ra "0" t2 in ra "0"
         //Tại 1 thời điểm chỉ 1 cái tác động vào obj gọi là Synchronized
+        //Khái niệm time penalty
+        /*
+        ArrayList<Integer> arrList = new ArrayList<>();
+        new Thread(()->{
+            for (int i = 0; i < 10; i++){
+                arrList.add(new Random().nextInt());
+            }
+        }).start();
+        new Thread(()->{
+            for (int i = 0; i < 10; i++){
+                arrList.get(i);
+            }
+        }).start();
+
+         */
+        WaitingThreading obj = new WaitingThreading();
+
+        new Thread(()->{
+            obj.get();
+        }).start();
+
+        new Thread(()->{
+            obj.add();
+        }).start();
+
     }
 }
